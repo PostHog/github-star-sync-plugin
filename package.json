@@ -1,0 +1,23 @@
+{
+    "name": "posthog-gitub-star-sync-plugin",
+    "version": "0.0.2",
+    "description": "Sync Github Stars to PostHog",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PostHog/gitub-star-sync-plugin.git"
+    },
+    "author": "Marius Andra <marius.andra@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PostHog/gitub-star-sync-plugin/issues"
+    },
+    "homepage": "https://github.com/PostHog/gitub-star-sync-plugin#readme",
+    "scripts": {
+        "test": "jest"
+    },
+    "devDependencies": {
+        "jest": "^26.6.3",
+        "@posthog/plugin-scaffold": "^0.2.9"
+    }
+}
