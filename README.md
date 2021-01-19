@@ -2,7 +2,7 @@
 
 Synchronise Github stars with PostHog. Creates a new event for each star with the correct timestamp.
 
-Requires PostHog 1.20+, so not currently usable outside of `master`.
+Requires PostHog 1.21+, so not currently usable outside of `master`.
 
 ## Setup via the PostHog
 
