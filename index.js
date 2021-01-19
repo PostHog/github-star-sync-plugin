@@ -58,8 +58,8 @@ async function runEveryMinute({ cache, storage, global, config }) {
     const validResults = lastCapturedTime
         ? results.filter((r) => dateValue(r.starred_at) > dateValue(lastCapturedTime))
         : results
-    const sortedResults = validResults.map((r) => r.starred_at).sort()
-    const newLastCaptureTime = sortedResults[sortedResults.length - 1]
+    const sortedDates = validResults.map((r) => r.starred_at).sort()
+    const newLastCaptureTime = sortedDates[sortedDates.length - 1]
 
     for (const star of validResults) {
         const {
@@ -78,16 +78,21 @@ async function runEveryMinute({ cache, storage, global, config }) {
         })
     }
 
-    if (newLastCaptureTime) {
+    if (newLastCaptureTime && newLastCaptureTime !== lastCapturedTime) {
         await storage.set(`lastCapturedTime-${global.projectId}`, newLastCaptureTime)
     }
 
-    if (validResults.length === 0 && results.length === perPage) {
+    if (results.length === perPage) {
+        // saved all 100 stars on this page, next time fetch the next page
         await storage.set(`page-${global.projectId}`, page + 1)
+    } else {
+        // on the last partial page, wait 5min before asking again to ease the retries
+        await cache.set('snoozing', true, 300)
     }
 }
 
+// this is mainly for jest, but doesn't hurt for plugin-server
 module.exports = {
     setupPlugin,
-    runEveryMinute
+    runEveryMinute,
 }

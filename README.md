@@ -4,6 +4,8 @@ Synchronise Github stars with PostHog. Creates a new event for each star with th
 
 Requires PostHog 1.21+, so not currently usable outside of `master`.
 
+It will still work with PostHog 1.20, but all stars will be created with the current timestamp instead of historic data.
+
 ## Setup via the PostHog
 
 1. Find the "plugins" page in PostHog.
