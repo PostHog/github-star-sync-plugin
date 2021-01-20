@@ -10,7 +10,10 @@ It will still work with PostHog 1.20, but all stars will be created with the cur
 
 1. Find the "plugins" page in PostHog.
 2. Either select the plugin from the list or copy the URL of this repository to install.
-3. Update the required settings and enable the plugin.
+3. Configure the plugin:
+   - Add the Github user/repo to sync. 
+   - Optionally add a personal API key (helps with rate limits)
+4. Enable the plugin.
 
 ## Questions?
 
