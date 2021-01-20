@@ -1,7 +1,7 @@
 {
-    "name": "github-star-sync-plugin",
-    "url": "https://github.com/PostHog/github-star-sync-plugin",
+    "name": "Github Star Sync Plugin",
     "description": "Sync Github Stars to PostHog",
+    "url": "https://github.com/PostHog/github-star-sync-plugin",
     "main": "index.js",
     "config": [
         {

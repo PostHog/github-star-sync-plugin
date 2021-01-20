@@ -31,11 +31,6 @@ async function runEveryMinute({ cache, storage, global, config }) {
         return
     }
 
-    // run every 10th minute
-    // if (new Date().getMinutes() % 10 !== 0) {
-    //     return
-    // }
-
     const perPage = 100
     const page = await storage.get(`page-${global.projectId}`, 1)
     const url = `https://api.github.com/repositories/${global.projectId}/stargazers?page=${page}&per_page=${perPage}`
@@ -91,7 +86,7 @@ async function runEveryMinute({ cache, storage, global, config }) {
     }
 }
 
-// this is mainly for jest, but doesn't hurt for plugin-server
+// this is mainly for jest, but doesn't hurt for plugin-server either
 module.exports = {
     setupPlugin,
     runEveryMinute,
