@@ -1,4 +1,4 @@
-# github-star-sync-plugin
+# GitHub Star Sync Plugin
 
 Synchronise Github stars with PostHog. Creates a new event for each star with the correct timestamp.
 
