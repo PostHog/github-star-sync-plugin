@@ -1,5 +1,5 @@
 {
-    "name": "Github Star Sync Plugin",
+    "name": "Github Star Sync",
     "description": "Sync Github Stars to PostHog",
     "url": "https://github.com/PostHog/github-star-sync-plugin",
     "main": "index.js",
