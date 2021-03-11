@@ -21,7 +21,8 @@
             "name": "Github API Token",
             "hint": "Create a new GitHub [personal access token](https://github.com/settings/tokens/new) with the `repo` scope. Then copy it here. This field is optional, though helps with Github API rate limits.",
             "type": "string",
-            "required": false
+            "required": false,
+            "secret": true
         }
     ]
 }
