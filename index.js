@@ -58,6 +58,7 @@ async function runEveryMinute({ cache, storage, global, config }) {
 
     const lastCapturedTime = await storage.get(`lastCapturedTime-${global.projectId}`, null)
     const dateValue = (dateString) => new Date(dateString).valueOf()
+    console.log(results)
     const validResults = lastCapturedTime
         ? results.filter((r) => dateValue(r.starred_at) > dateValue(lastCapturedTime))
         : results
