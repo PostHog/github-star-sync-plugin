@@ -3,6 +3,7 @@ async function setupPlugin({ storage, config, global }) {
         throw new Error("Please set the 'user' or 'repo' config values")
     }
 
+
     // We need the project's ID in subsequent API calls. Make an API call to fetch if if it's not already saved.
     const { projectId, user, repo } = (await storage.get('projectCache')) || {}
     if (projectId && user === config.user && repo === config.repo) {
@@ -18,6 +19,13 @@ async function setupPlugin({ storage, config, global }) {
         const { id } = await response.json()
         await storage.set('projectCache', { projectId: id, user: config.user, repo: config.repo })
         global.projectId = id
+    }
+
+    const resetStorage = config.resetStorage === 'Yes'
+
+    if (resetStorage) {
+        await storage.del(`lastCapturedTime-${global.projectId}`)
+        await storage.del(`page-${global.projectId}`)
     }
 
     if (!global.projectId) {
@@ -62,7 +70,7 @@ async function runEveryMinute({ cache, storage, global, config }) {
             user: { login, url, id, avatar_url },
         } = star
 
-        posthog.capture('Github Star', {
+        posthog.capture(config.eventName || 'GitHub Star', {
             timestamp: star.starred_at,
             repository: `${config.user}/${config.repo}`,
             starred_at: star.starred_at,

@@ -23,6 +23,22 @@
             "type": "string",
             "required": false,
             "secret": true
+        },
+        {
+            "key": "eventName",
+            "name": "Event name",
+            "type": "string",
+            "required": false,
+            "default": "GitHub Star"
+        },
+        {
+            "key": "resetStorage",
+            "name": "Reset",
+            "type": "choice",
+            "choices": ["No", "Yes"],
+            "hint": "**Advanced**",
+            "required": false,
+            "default": "No"
         }
     ]
 }
